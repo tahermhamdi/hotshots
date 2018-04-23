@@ -1,10 +1,114 @@
+<!--
+multer is for file parsering
+uid-safe generates an unique id garanti to be unique for the image names
+
+focus on client side, we are using vuejs for this, backbone a framework
+we are using vue because vue is kind
+vue is growing...-->
 <!doctype html>
 <html>
 <head>
-    <title></title>
+    <title> ¡¡ Hot shots</title>
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
+    <div id="cameratop">
+        <h1 class="textsh"><img id="camera" src="camera.png"/>¡¡ Hot shots</h1>
+    </div>
+    <div id="main">
+        <div id="likes">
+                <h1 class="textsh"><img src="like.jpg" id="likegeneral"/>
+                <likes-count v-bind:likescount="likescount"></likes-count></h1>
+        </div>
+    <div id="app">
+        <h2>Add a new Image now</h2>
+        <image-modal v-if="imageid" v-bind:imageid="imageid" v-bind:tags="tags" v-on:xclose ="xclose">
+        </image-modal>
+        title<input type="text" name="title" v-model="fileToUpload.title" class="form-control" placeholder="title" required="required">
+        description<input type="text" name="description" v-model="fileToUpload.description" class="form-control" placeholder="description" required="required">
+        username<input type="text" name="username" v-model="fileToUpload.username" class="form-control" placeholder="username" required="required">
+        <br>
+        <input type="file" name="image" v-on:change="setFile">
+        <button v-on:click="upload"><p class="texts">Upload</p></button>
+        <p><h1 class="textsh">Latest images</h1></p>
+    </div>
+    <div v-if="images.length > 0">
+        <div v-for="image in images" class="box">
+                <img :src=image.url>
+                    <image-detail
+                          v-bind:id="image.id"
+                          v-bind:commentscount="image.commentscount"
+                          v-bind:likescount="image.likescount"
+                          v-bind:title="image.title"
+                          v-on:show ="show"
+                    ></image-detail>
+            </div>
+    </div>
+</div>
+
+    <script id="image-modal-tmpl" type="text/x-template">
+        <div id="overlay">
+                <div class="modaltotal">
+                    <div v-for="(comment, index) in comments" v-if="imageid &&  index===0" class="modal">
+                        <img class="imgmodal" :src="comment.url" :title="tags">
+                        <div id="tagform">
+                            <p>tag<input type="text" name="tag" class="form-control" v-model="tagToSubmit.tag" placeholder="tag" required="required" v-on:keyup.enter="submitTag"></p>
+                        </div>
+                    </div>
+                    <div class="detailsmodal">
+                        <img id="close" src="close.png" v-on:click="causeclose"/>
+                        <div v-for="(comment, index) in comments" v-if="imageid &&  index===0">
+                            <div v-bind:username="username" v-bind:description="description"><span id="titlebold">{{comment.username}}</span>&ensp;{{comment.description}}</div>
+                        </div>
+                        <div id="commentform">
+                            <p>username<input type="text" name="usernamecomment" class="form-control" v-model="commentToSubmit.usernamecomment" placeholder="usernamecomment" required="required"></p>
+                            <p>Comment<input type="text" name="comment" class="form-control"  v-model="commentToSubmit.comment" placeholder="comment" required="required" v-on:keyup.enter="submit"></p>
+                        </div>
+                        <div class="countsmodal">
+                            <p v-bind:likesmodal="likesmodal" v-bind:commentsmodal="commentsmodal">{{likesmodal}}&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{{commentsmodal}}</p>
+                            <img id="like" src="like.jpg" v-on:click="submitlike"/><img id="commentbutton" src="comment.png" onclick="comment();"/>
+                            <br>
+                            <img id="tag" src="tag.png" onclick="tag();"/>
+                            </p>
+                        </div>
+                        <div>
+                            <p v-for="comment in comments" v-if="imageid && comment.comment">
+                            <strong> {{comment.commentusername}} </strong> {{comment.comment}}
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </script>
+    <script id="image-detail-tmpl" type="text/x-template">
+        <div class="details">
+            <br>
+            <br>
+            <a v-bind:href="'#'+id">{{title}}</a>
+            <br>
+            <br>
+            <br>
+            <div id="smalllike">
+            <img src="likecomment.png"/>
+            {{likescount}}&ensp;{{commentscount}}
+            </div>
+        </div>
+    </script>
+
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
+    <script src="/js/script.js"></script>
+    <script>
+    function comment() {
+        document.getElementById("commentform").style.display = "block";
+    }
+    function tag() {
+        document.getElementById("tagform").style.display = "block";
+    }
+    function tagenter() {
+
+    }
+    </script>
 </body>
 </html>

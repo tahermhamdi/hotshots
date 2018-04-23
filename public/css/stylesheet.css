@@ -1,0 +1,214 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: white;
+    src: url("5yearsoldfont.ttf");
+    font-family: "5yearsoldfont";
+    align: center;
+    position: relative;
+}
+.main {
+    overflow: hidden;
+
+}
+.box {
+    background-color: white;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    align: center;
+    overflow: hidden;
+    position: relative;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+    margin-left: 3px;
+
+}
+.box img {
+    position: absolute;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    max-height: 250px;
+    max-width: auto;
+}
+.box:hover img {
+  opacity: 0.6;
+}
+.box:hover .details {
+  display : inline-block;
+}
+.box .details {
+  display: none;
+  background: rgba(207, 207, 211, .8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: white;
+  font-size: 1.2rem;
+  src: url("5yearsoldfont.ttf");
+  font-family: "5yearsoldfont";
+  text-align:center;
+  justify-content: center;
+}
+.box:hover .details {
+  display : inline-block;
+}
+.modal img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 200px;
+    height: auto;
+    align: center;
+}
+#commentform {
+    display: none;
+}
+#tagform {
+    display: none;
+    position:absolute;
+    left:80px; top:80px;
+}
+#commentbutton {
+    width:100px;
+    height:auto;
+}
+#overlay p {
+    text-align:left;
+    align:left;
+    font-size: 12px;
+}
+#overlay span {
+    text-align:left;
+    font-size: 14px;
+}
+#likes {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+#cameratop {
+    top: 0px;
+    left: 0px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+#app {
+    src: url("5yearsoldfont.ttf");
+    font-family: "5yearsoldfont";
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+.texts {
+    src: url("5yearsoldfont.ttf");
+    font-family: "5yearsoldfont";
+    font-size: 14px;
+    font-weight: bold;
+}
+.textsh {
+    src: url("5yearsoldfont.ttf");
+    font-family: "5yearsoldfont";
+}
+#overlay {
+     position: absolute;
+     background-color: rgba(39, 24, 23, 0.3);
+     cursor: col-resize;
+     z-index: 10000;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height: 100%;
+     align: center;
+     display: inline-block;
+     position: fixed;
+}
+.modaltotal {
+    position: relative;
+    top: 200px;
+    left: 200px;
+    transform: translate(0);
+}
+.modal {
+    display: inline-block;
+    margin-left: 0;
+    width:600px;
+    height:400px;
+    background-color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+.countsmodal {
+    display: inline-block;
+}
+.detailsmodal {
+    display: inline-block;
+    margin-right: 0;
+    width:300px;
+    height:400px;
+    background-color: white;
+    overflow: auto;
+    vertical-align: middle;
+}
+.modal img {
+    width:auto;
+    height:400px;
+    background-color: white;
+    vertical-align: middle;
+}
+#close {
+    width:30px;
+    height:30px;
+    float:right;
+}
+#camera {
+    max-width:120px;
+    max-height:120px;
+}
+#like {
+    width:30px;
+    height:30px;
+}
+#likegeneral {
+    width:60px;
+    height:60px;
+    float:right;
+}
+#smalllike {
+    display : inline-block;
+}
+#smalllike img {
+    width:60px;
+    height:auto;
+
+}
+#titlebold {
+    font-size: 20px;
+}
+#smallcomment {
+    display : inline-block;
+}
+#smallcomment img {
+    width:20px;
+    height:20px;
+    float:left;
+    border:2px;
+    display : inline-block;
+}
+#tag {
+    width:30px;
+    height:30px;
+}
+h1 {
+    font-size: 35px;
+}
+h2 {
+    font-size: 25px;
+}
